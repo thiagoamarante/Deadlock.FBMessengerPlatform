@@ -61,6 +61,7 @@
     <Compile Include="Client\Adjustment.cs" />
     <Compile Include="Client\Attachment.cs" />
     <Compile Include="Client\Button.cs" />
+    <Compile Include="Client\CallToAction.cs" />
     <Compile Include="Client\ReceiptElement.cs" />
     <Compile Include="Client\ReceiptPayloadTemplate.cs" />
     <Compile Include="Client\Extensions.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Client\Recipient.cs" />
     <Compile Include="Client\Send.cs" />
     <Compile Include="Client\Summary.cs" />
+    <Compile Include="Client\ThreadSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="WebHooks\Attachment.cs" />

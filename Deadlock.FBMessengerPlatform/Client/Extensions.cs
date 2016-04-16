@@ -13,5 +13,15 @@ namespace Deadlock.FBMessengerPlatform.Client
         {
             return client.Post("me/messages", send);
         }
+
+        public static object WelcomeMessage(this FacebookClient client, string pageId, ThreadSettings threadSettings)
+        {
+            return client.Post($"{pageId}/thread_settings", threadSettings);
+        }
+
+        public static object UserProfile(this FacebookClient client, string userId)
+        {
+            return client.Get($"{userId}?fields=first_name,last_name,profile_pic");
+        }
     }
 }

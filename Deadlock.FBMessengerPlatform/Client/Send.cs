@@ -16,7 +16,7 @@ namespace Deadlock.FBMessengerPlatform.Client
         /// <summary>
         /// Push notification type: REGULAR, SILENT_PUSH, NO_PUSH
         /// </summary>
-        public string notification_type { get; set; }
+        public string notification_type { get; set; } = "REGULAR";
 
         /// <summary>
         /// Contents of the message
