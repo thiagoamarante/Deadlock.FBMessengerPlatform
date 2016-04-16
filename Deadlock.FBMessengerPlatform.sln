@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deadlock.FBMessengerPlatform", "Deadlock.FBMessengerPlatform.csproj", "{D381DB76-415B-4ABF-B3FD-1E80A23F38C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deadlock.FBMessengerPlatform", "Deadlock.FBMessengerPlatform\Deadlock.FBMessengerPlatform.csproj", "{D381DB76-415B-4ABF-B3FD-1E80A23F38C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

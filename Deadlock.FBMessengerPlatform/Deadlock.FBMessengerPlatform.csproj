@@ -57,6 +57,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client\Address.cs" />
+    <Compile Include="Client\Adjustment.cs" />
+    <Compile Include="Client\Attachment.cs" />
+    <Compile Include="Client\Button.cs" />
+    <Compile Include="Client\ReceiptElement.cs" />
+    <Compile Include="Client\ReceiptPayloadTemplate.cs" />
+    <Compile Include="Client\Extensions.cs" />
+    <Compile Include="Client\GenericElement.cs" />
+    <Compile Include="Client\ButtonPayloadTemplate.cs" />
+    <Compile Include="Client\GenericPayloadTemplate.cs" />
+    <Compile Include="Client\IElement.cs" />
+    <Compile Include="Client\IPayload.cs" />
+    <Compile Include="Client\IPayloadTemplate.cs" />
+    <Compile Include="Client\Message.cs" />
+    <Compile Include="Client\ImagePayload.cs" />
+    <Compile Include="Client\Recipient.cs" />
+    <Compile Include="Client\Send.cs" />
+    <Compile Include="Client\Summary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="WebHooks\Attachment.cs" />
