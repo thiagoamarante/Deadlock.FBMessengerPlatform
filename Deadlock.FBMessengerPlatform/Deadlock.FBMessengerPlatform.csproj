@@ -77,6 +77,7 @@
     <Compile Include="Client\Send.cs" />
     <Compile Include="Client\Summary.cs" />
     <Compile Include="Client\ThreadSettings.cs" />
+    <Compile Include="Client\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="WebHooks\Attachment.cs" />

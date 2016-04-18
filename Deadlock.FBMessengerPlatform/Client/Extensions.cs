@@ -19,9 +19,9 @@ namespace Deadlock.FBMessengerPlatform.Client
             return client.Post($"{pageId}/thread_settings", threadSettings);
         }
 
-        public static object UserProfile(this FacebookClient client, string userId)
+        public static UserProfile UserProfile(this FacebookClient client, string userId)
         {
-            return client.Get($"{userId}?fields=first_name,last_name,profile_pic");
+            return client.Get<UserProfile>($"{userId}?fields=first_name,last_name,profile_pic");
         }
     }
 }
