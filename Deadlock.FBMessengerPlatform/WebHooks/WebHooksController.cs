@@ -13,6 +13,9 @@ namespace Deadlock.FBMessengerPlatform.WebHooks
     {
         public virtual HttpResponseMessage Get([FromUri]Hub hub)
         {
+            if(hub == null)
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "The hub can not be null.");
+
             if (hub.verify_token == Settings.VerifyToken)
             {
                 var resp = new HttpResponseMessage(HttpStatusCode.OK);

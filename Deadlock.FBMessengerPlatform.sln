@@ -5,6 +5,15 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deadlock.FBMessengerPlatform", "Deadlock.FBMessengerPlatform\Deadlock.FBMessengerPlatform.csproj", "{D381DB76-415B-4ABF-B3FD-1E80A23F38C7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A457D169-FF38-415C-84C8-39A92C3D4C46}"
+	ProjectSection(SolutionItems) = preProject
+		Annotations.txt = Annotations.txt
+		Deadlock.FBMessengerPlatform.nuspec = Deadlock.FBMessengerPlatform.nuspec
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deadlock.FBMessengerPlatform.Test", "Deadlock.FBMessengerPlatform.Test\Deadlock.FBMessengerPlatform.Test.csproj", "{AFDC5692-37B2-4D76-B170-684DE738017F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +24,10 @@ Global
 		{D381DB76-415B-4ABF-B3FD-1E80A23F38C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D381DB76-415B-4ABF-B3FD-1E80A23F38C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D381DB76-415B-4ABF-B3FD-1E80A23F38C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFDC5692-37B2-4D76-B170-684DE738017F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFDC5692-37B2-4D76-B170-684DE738017F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFDC5692-37B2-4D76-B170-684DE738017F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFDC5692-37B2-4D76-B170-684DE738017F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

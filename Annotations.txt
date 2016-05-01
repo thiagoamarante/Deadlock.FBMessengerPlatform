@@ -1,0 +1,15 @@
+##### References
+https://developers.facebook.com/products/messenger/
+https://developers.facebook.com/docs/messenger-platform
+
+
+##### GENERATE PACKAGE
+
+.\Tools\NuGet.exe pack .\Deadlock.FBMessengerPlatform.nuspec -Symbols
+//.\Tools\NuGet.exe pack .\Deadlock.FBMessengerPlatform.nuspec -Version 1.0.0
+//.\Tools\NuGet.exe pack Deadlock.FBMessengerPlatform\Deadlock.FBMessengerPlatform.csproj -Build -Symbols -Properties Configuration=Release
+
+(*) PUSH PACKAGE
+.\Tools\NuGet.exe setapikey [APIKEY]
+.\Tools\NuGet.exe push Deadlock.FBMessengerPlatform.1.0.0.nupkg
+

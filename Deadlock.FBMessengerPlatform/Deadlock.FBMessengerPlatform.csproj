@@ -82,6 +82,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="WebHooks\Attachment.cs" />
     <Compile Include="WebHooks\Callback.cs" />
+    <Compile Include="WebHooks\Coordinates.cs" />
     <Compile Include="WebHooks\Delivery.cs" />
     <Compile Include="WebHooks\Entry.cs" />
     <Compile Include="WebHooks\Hub.cs" />

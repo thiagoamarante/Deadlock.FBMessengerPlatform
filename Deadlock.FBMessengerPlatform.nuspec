@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Deadlock.FBMessengerPlatform</id>
+    <version>1.0.0</version>
+    <title>Deadlock FBMessengerPlatform</title>
+    <authors>Thiago Amarante</authors>
+    <owners>thiagoamarante</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://github.com/thiagoamarante/Deadlock.FBMessengerPlatform</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Framework in C # to create bots for Facebook Messenger Platform</description>
+    <summary>Framework in C # to create bots for Facebook Messenger Platform</summary>
+    <tags>bot facebook messenger</tags>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=386613</iconUrl>
+    <language>en-US</language>
+    <dependencies>      
+      <dependency id="Newtonsoft.Json" version="8.0.2" />
+    </dependencies>
+    <frameworkAssemblies>      
+      <frameworkAssembly assemblyName="System.Net.Http" />      
+    </frameworkAssemblies>    
+  </metadata>
+  <files>
+    <file src="Deadlock.FBMessengerPlatform\bin\Release\Deadlock.FBMessengerPlatform.dll" target="lib\net45" />
+    <file src="Deadlock.FBMessengerPlatform\bin\Release\Deadlock.FBMessengerPlatform.pdb" target="lib\net45" />
+  </files>
+</package>

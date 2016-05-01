@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Deadlock.FBMessengerPlatform.WebHooks
 {
-    public class Payload
+    public class Coordinates
     {
-        public string Url { get; set; }
+        public string Lat { get; set; }
 
-        public Coordinates Coordinates { get; set; }
+        public string Long { get; set; }
     }
 }
