@@ -15,14 +15,17 @@
     <iconUrl>http://go.microsoft.com/fwlink/?LinkID=386613</iconUrl>
     <language>en-US</language>
     <dependencies>      
-      <dependency id="Newtonsoft.Json" version="8.0.2" />
+      <dependency id="Newtonsoft.Json" version="8.0.3" />
+      <dependency id="Facebook" version="7.0.6" />
+      <dependency id="Microsoft.AspNet.WebApi.Client" version="5.2.3" />
+      <dependency id="Microsoft.AspNet.WebApi.Core" version="5.2.3" />
     </dependencies>
     <frameworkAssemblies>      
       <frameworkAssembly assemblyName="System.Net.Http" />      
     </frameworkAssemblies>    
   </metadata>
   <files>
-    <file src="Deadlock.FBMessengerPlatform\bin\Release\Deadlock.FBMessengerPlatform.dll" target="lib\net45" />
-    <file src="Deadlock.FBMessengerPlatform\bin\Release\Deadlock.FBMessengerPlatform.pdb" target="lib\net45" />
+    <file src="Deadlock.FBMessengerPlatform\bin\Release\Deadlock.FBMessengerPlatform.dll" target="lib\net461" />
+    <file src="Deadlock.FBMessengerPlatform\bin\Release\Deadlock.FBMessengerPlatform.pdb" target="lib\net461" />
   </files>
 </package>

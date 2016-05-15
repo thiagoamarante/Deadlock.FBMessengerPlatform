@@ -2,251 +2,419 @@
 
 Framework in C # to create bots for Facebook Messenger Platform
 
-C# Framework to make trades with the private [Robinhood](https://www.robinhood.com/) API. 
-Using this API is not encouraged, since it's not officially available. 
+See how your bot can use our platform to have rich conversations with people on Messenger
 
-> This framework was inspired by a deprecated Python framework originally developed by [@Rohanpai](https://github.com/rohanpai).
+> Messenger Platform
+Introducing new tools to help you build your bot and reach 900 million people around the world
 
-> Disclaimer: This is an unofficial client package.
-I'm not affiliated with the folks at Robinhood Markets Inc.
-
-
+[More Details About Messenger Platform](https://developers.facebook.com/docs/messenger-platform) 
 
 ## Features
       
-* Login
-* Get User
-* Get Accounts
-* Get Positions
-* Get Portfolio
-* Get Orders
-* New Order
-* Cancel Order
-* Get Instrument
-* Get Quote
+* WebHooks Verification
+* WebHooks Post
+* Get User Profile
+* Set Welcome Message
+* Send Basic Message
+* Send Image Message
+* Send Button Message
+* Send Generic Message
+* Send Receipt Message
 
-
+## Creating Controller for WebHook
 ```c#
+    using System.Net.Http;   
+    using Deadlock.FBMessengerPlatform.WebHooks;
 
-using Deadlock.Robinhood;
-
-static string _token = "";
-static string _account = "";
-static string _username = "";
-static string _password = "";
-static string _instrumentTwitter = "https://api.robinhood.com/instruments/3a47ca97-d5a2-4a55-9045-053a588894de/";
-static string _orderId = "";
-```
-
-### Login with username and password
-
-```c#
-
-static async Task Login()
-{
-    using (RobinhoodClient client = new RobinhoodClient())
+    public class FacebookController : Deadlock.FBMessengerPlatform.WebHooks.WebHooksController
     {
-        var result = await client.Login(_username, _password);
-        if (result.StatusCode == System.Net.HttpStatusCode.OK)
-        {
-            Console.WriteLine(result.Data.Token);
-        }
     }
-}
 ```
 
-### Login with token
+### WebHook Verification
 
 ```c#
+    using System.Net.Http;   
+    using Deadlock.FBMessengerPlatform.WebHooks;
 
-static async Task LoginWithToken()
-{
-    using (RobinhoodClient client = new RobinhoodClient(_token))
+    public override HttpResponseMessage Get([System.Web.Http.FromUriAttribute] Hub hub)
     {
-        var result = await client.Quote("TWTR");
-        if (result.StatusCode == System.Net.HttpStatusCode.OK)
-        {
-            Console.WriteLine(result.Data.Symbol);
-        }
+        //Add in appSettings <add key="Deadlock.FBMessengerPlatform.VerifyToken" value="{VerifyToken}" />
+        return base.Get(hub);
     }
-}
 ```
 
-### Get user informations
+### WebHook Post
 
 ```c#
+    using System.Net.Http;   
+    using Deadlock.FBMessengerPlatform.WebHooks;
 
-static async Task GetUserInformations()
-{
-    using (RobinhoodClient client = new RobinhoodClient(_token))
+    public override HttpResponseMessage Post([System.Web.Http.FromBodyAttribute] Callback value)
     {
-        var result = await client.User();
-        if (result.StatusCode == System.Net.HttpStatusCode.OK)
+        //Implementation
+        foreach(Entry entry in value.Entry)
         {
-            Console.WriteLine(result.Data.Username);
+            foreach(Messaging messaging in entry.Messaging)
+            {
+                if(messaging.Delivery != null)
+                {
+                    //Confirmation Delivery
+                }
+                else if (messaging.Message != null)
+                {
+                    //User Send Message
+                }
+                else if (messaging.Optin != null)
+                {
+                    //User Call "Message Us" 
+                }
+                else if (messaging.PostBack != null)
+                {
+                    //User Button Click PostBack
+                }
+            }
         }
+        return base.Post(value);
     }
-}
 ```
 
-### List Accounts
+### User Profile
 
 ```c#
+    using Facebook;
+    using Deadlock.FBMessengerPlatform.Client;
 
-static async Task ListAccounts()
-{
-    using (RobinhoodClient client = new RobinhoodClient(_token))
+    static async Task UserProfile()
     {
-        var result = await client.Accounts();
-        if (result.StatusCode == System.Net.HttpStatusCode.OK)
-        {
-            result.Data.Results.ForEach(account =>
-                Console.WriteLine(account.AccountNumber)
-            );
-        }
+        FacebookClient client = new FacebookClient(_config.PageAccessToken);
+        var userProfile = await client.UserProfile("{userid}");
+        Console.WriteLine(userProfile.first_name);
+        Console.WriteLine(userProfile.last_name);
+        Console.WriteLine(userProfile.profile_pic);
     }
-}
 ```
 
-### List Positions
+### Set Welcome Message
 
 ```c#
+    using Facebook;
+    using Deadlock.FBMessengerPlatform.Client;
 
-static async Task ListPositions()
-{
-    using (RobinhoodClient client = new RobinhoodClient(_token))
+    static async Task SetWelcomeMessage()
     {
-        var result = await client.Positions();
-        if (result.StatusCode == System.Net.HttpStatusCode.OK)
+        FacebookClient client = new FacebookClient(_config.PageAccessToken);
+        var result = await client.WelcomeMessage(new ThreadSettings()
         {
-            result.Data.Results.ForEach(position =>
-                Console.WriteLine(position.Quantity)
-            );
-        }
-    }
-}
-```
-
-### Get Portfolio
-
-```c#
-
-static async Task GetPortfolio()
-{
-    using (RobinhoodClient client = new RobinhoodClient(_token))
-    {
-        var resultPortfolios = await client.Portfolios();
-        if (resultPortfolios.StatusCode == System.Net.HttpStatusCode.OK)
-        {
-            resultPortfolios.Data.Results.ForEach(portfolio =>
-                Console.WriteLine(portfolio.MarketValue)
-            );
-        }
-
-        //by accountNumber
-        var resultPortfolio = await client.Portfolios(UrlManager.GetAccountNumber(_account));
-        if (resultPortfolio.StatusCode == System.Net.HttpStatusCode.OK)
-        {
-            Console.WriteLine(resultPortfolio.Data.MarketValue);
-        }
-    }
-}
-```
-
-### List Orders
-
-```c#
-
-static async Task ListOrders()
-{
-    using (RobinhoodClient client = new RobinhoodClient(_token))
-    {
-        var result = await client.Orders();
-        if (result.StatusCode == System.Net.HttpStatusCode.OK)
-        {
-            result.Data.Results.ForEach(order =>
-                Console.WriteLine(order.Price)
-            );
-        }
-    }
-}
-```
-
-### New Order
-
-```c#
-
-static async Task NewOrder()
-{
-    using (RobinhoodClient client = new RobinhoodClient(_token))
-    {
-        var result = await client.Orders(new Model.NewOrder()
-        {
-            Account = _account,                 
-            Price = 10,
-            Quantity = 1,
-            Side = Model.Side.Buy,
-            TimeInForce = "gfd",
-            Trigger = "immediate",
-            Type = "market",
-            Symbol = "TWTR",
-            Instrument = _instrumentTwitter
+            call_to_actions = new List<CallToAction>()
+            {
+                new CallToAction()
+                {
+                    message = new Deadlock.FBMessengerPlatform.Client.Message()
+                    {
+                        attachment = new Attachment()
+                        {
+                            type = "template",
+                            payload = new GenericPayloadTemplate()
+                            {
+                                elements = new List<GenericElement>()
+                                {
+                                    new GenericElement()
+                                    {
+                                        title = "Welcome to My Company!",
+                                        item_url = "https://www.petersbowlerhats.com",
+                                        image_url = "https://www.petersbowlerhats.com/img/hat.jpeg",
+                                        subtitle = "We have the right hat for everyone.",
+                                        buttons = new List<Button>()
+                                        {
+                                            new Button()
+                                            {
+                                                type = "web_url",
+                                                url = "https://www.petersbowlerhats.com",
+                                                title = "View Website"
+                                            },
+                                            new Button()
+                                            {
+                                                type = "postback",
+                                                payload = "DEVELOPER_DEFINED_PAYLOAD",
+                                                title = "Start Chatting"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         });
-        if (result.IsSuccessStatusCode)
-        {
-            _orderId = result.Data.Id;
-        }
     }
-}
 ```
 
-### Cancel Order
+### Send Basic Message
 
 ```c#
+    using Facebook;
+    using Deadlock.FBMessengerPlatform.Client;
 
-static async Task CancelOrder()
-{
-    using (RobinhoodClient client = new RobinhoodClient(_token))
+    static async Task SendBasicMessage()
     {
-        var result = await client.CancelOrder(_orderId);
-        if (result.StatusCode == System.Net.HttpStatusCode.OK)
+        FacebookClient client = new FacebookClient(_config.PageAccessToken);
+        var result = await client.SendMessage(new Send()
         {
-
-        }
+            recipient = new Recipient()
+            {
+                id = "{userid}"
+            },
+            message = new Message()
+            {
+                text = "hello, world!"
+            }
+        });
     }
-}
 ```
 
-### Get Instrument
+### Send Image Message
 
 ```c#
-
-static async Task GetInstrument()
-{
-    using (RobinhoodClient client = new RobinhoodClient(_token))
+    using Facebook;
+    using Deadlock.FBMessengerPlatform.Client;
+    
+    static async Task SendImageMessage()
     {
-        var result = await client.Instrument("3a47ca97-d5a2-4a55-9045-053a588894de"); //twitter
-        if (result.StatusCode == System.Net.HttpStatusCode.OK)
+        FacebookClient client = new FacebookClient(_config.PageAccessToken);
+        var result = await client.SendMessage(new Send()
         {
-            Console.WriteLine(result.Data.Name);
-        }
+            recipient = new Recipient()
+            {
+                id = "{userid}"
+            },
+            message = new Message()
+            {
+                attachment = new Deadlock.FBMessengerPlatform.Client.Attachment()
+                {
+                    type = "image",
+                    payload = new ImagePayload()
+                    {
+                        url = "http://images.outbrain.com/imageserver/v2/s/Mdo3/n/1Nzpng/abc/1J8juy/1Nzpng-1lLg-420x340.jpg"
+                    }
+                }
+            }
+        });
     }
-}
 ```
 
-### Get Quote
+### Send Button Message
 
 ```c#
-
-static async Task GetQuote()
-{
-    using (RobinhoodClient client = new RobinhoodClient(_token))
+    using Facebook;
+    using Deadlock.FBMessengerPlatform.Client;
+    
+    static async Task SendButtonMessage()
     {
-        var result = await client.Quote("TWTR");
-        if (result.StatusCode == System.Net.HttpStatusCode.OK)
+        FacebookClient client = new FacebookClient(_config.PageAccessToken);
+        var result = await client.SendMessage(new Send()
         {
-            Console.WriteLine(result.Data.BidPrice);
-        }
+            recipient = new Recipient()
+            {
+                id = "{userid}"
+            },
+            message = new Message()
+            {
+                attachment = new Attachment()
+                {
+                    type = "template",
+                    payload = new ButtonPayloadTemplate()
+                    {
+                        text = "What do you want to do next?",
+                        buttons = new List<Button>()
+                    {
+                        new Button()
+                        {
+                            type = "web_url",
+                            url = "https://petersapparel.parseapp.com",
+                            title = "Show Website"
+                        },
+                        new Button()
+                        {
+                            type = "postback",
+                            payload = "USER_DEFINED_PAYLOAD",
+                            title = "Start Chatting"
+                        }
+                    }
+                    }
+                }
+            }
+        });
     }
-}
+```
+
+### Send Generic Message
+
+```c#
+    using Facebook;
+    using Deadlock.FBMessengerPlatform.Client;
+    
+    static async Task SendGenericMessage()
+    {
+        FacebookClient client = new FacebookClient(_config.PageAccessToken);
+        var result = await client.SendMessage(new Send()
+        {
+            recipient = new Recipient()
+            {
+                id = "{userid}"
+            },
+            message = new Message()
+            {
+                attachment = new Attachment()
+                {
+                    type = "template",
+                    payload = new GenericPayloadTemplate()
+                    {
+                        elements = new List<GenericElement>()
+                        {
+                            new GenericElement()
+                            {
+                                title = "Classic White T-Shirt",
+                                image_url = "http://petersapparel.parseapp.com/img/item100-thumb.png",
+                                subtitle = "Soft white cotton t-shirt is back in style",
+                                buttons = new List<Button>()
+                                {
+                                    new Button()
+                                    {
+                                        type = "web_url",
+                                        url = "https://petersapparel.parseapp.com/view_item?item_id=100",
+                                        title = "View Item"
+                                    },
+                                    new Button()
+                                    {
+                                        type = "web_url",
+                                        url = "https://petersapparel.parseapp.com/buy_item?item_id=100",
+                                        title = "Buy Item"
+                                    },
+                                    new Button()
+                                    {
+                                        type = "postback",
+                                        payload = "USER_DEFINED_PAYLOAD_FOR_ITEM100",
+                                        title = "Bookmark Item"
+                                    }
+                                }
+                            },
+                            new GenericElement()
+                            {
+                                title = "Classic Grey T-Shirt",
+                                image_url = "http://petersapparel.parseapp.com/img/item101-thumb.png",
+                                subtitle = "Soft gray cotton t-shirt is back in style",
+                                buttons = new List<Button>()
+                                {
+                                    new Button()
+                                    {
+                                        type = "web_url",
+                                        url = "https://petersapparel.parseapp.com/view_item?item_id=101",
+                                        title = "View Item"
+                                    },
+                                    new Button()
+                                    {
+                                        type = "web_url",
+                                        url = "https://petersapparel.parseapp.com/buy_item?item_id=101",
+                                        title = "Buy Item"
+                                    },
+                                    new Button()
+                                    {
+                                        type = "postback",
+                                        payload = "USER_DEFINED_PAYLOAD_FOR_ITEM101",
+                                        title = "Bookmark Item"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+```
+
+### Send Receipt Message
+
+```c#
+    using Facebook;
+    using Deadlock.FBMessengerPlatform.Client;
+    
+    static async Task SendReceiptMessage()
+    {
+        FacebookClient client = new FacebookClient(_config.PageAccessToken);
+        var result = await client.SendMessage(new Send()
+        {
+            recipient = new Recipient()
+            {
+                id = "{userid}"
+            },
+            message = new Message()
+            {
+                attachment = new Attachment()
+                {
+                    type = "template",
+                    payload = new ReceiptPayloadTemplate()
+                    {
+                        recipient_name = "Stephane Crozatier",
+                        order_number = "12345678902",
+                        currency = "USD",
+                        payment_method = "Visa 2345",
+                        order_url = "http://petersapparel.parseapp.com/order?order_id=123456",
+                        timestamp = "1428444852",
+                        elements = new List<ReceiptElement>()
+                        {
+                            new ReceiptElement()
+                            {
+                                title = "Classic White T-Shirt",
+                                subtitle = "100% Soft and Luxurious Cotton",
+                                quantity = 2,
+                                price = 50,
+                                currency = "USD",
+                                image_url = "http://petersapparel.parseapp.com/img/whiteshirt.png"
+                            },
+                            new ReceiptElement()
+                            {
+                                title = "Classic Gray T-Shirt",
+                                subtitle = "100% Soft and Luxurious Cotton",
+                                quantity = 1,
+                                price = 25,
+                                currency = "USD",
+                                image_url = "http://petersapparel.parseapp.com/img/grayshirt.png"
+                            }
+                        },
+                            address = new Address()
+                            {
+                                street_1 = "1 Hacker Way",
+                                city = "Menlo Park",
+                                postal_code = "94025",
+                                state = "CA",
+                                country = "US"
+                            },
+                            summary = new Summary()
+                            {
+                                subtotal = 75.00m,
+                                shipping_cost = 4.95m,
+                                total_tax = 6.19m,
+                                total_cost = 56.14m
+                            },
+                            adjustments = new List<Adjustment>()
+                        {
+                            new Adjustment()
+                            {
+                                name = "New Customer Discount",
+                                amount = 20
+                            },
+                            new Adjustment()
+                            {
+                                name = "$10 Off Coupon",
+                                amount = 10
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
 ```

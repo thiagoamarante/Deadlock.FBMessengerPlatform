@@ -12,6 +12,6 @@ namespace Deadlock.FBMessengerPlatform.Client
 
         public string thread_state { get { return "new_thread"; } }
 
-        public List<CallToAction> call_to_actions { get; set; }
+        public List<CallToAction> call_to_actions { get; set; } = new List<CallToAction>();
     }
 }

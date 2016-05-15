@@ -10,7 +10,7 @@ namespace Deadlock.FBMessengerPlatform.Test
     {
         public string VerifyToken { get; set; }
 
-        public string AccessToken { get; set; }
+        public string PageAccessToken { get; set; }
 
         public string PageId { get; set; }
     }

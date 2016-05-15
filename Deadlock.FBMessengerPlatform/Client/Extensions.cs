@@ -14,9 +14,9 @@ namespace Deadlock.FBMessengerPlatform.Client
             return await client.PostTaskAsync("me/messages", send);
         }
 
-        public static async Task<object> WelcomeMessage(this FacebookClient client, string pageId, ThreadSettings threadSettings)
+        public static async Task<object> WelcomeMessage(this FacebookClient client, ThreadSettings threadSettings)
         {
-            return await client.PostTaskAsync($"{pageId}/thread_settings", threadSettings);
+            return await client.PostTaskAsync($"me/thread_settings", threadSettings);
         }
 
         public static async Task<UserProfile> UserProfile(this FacebookClient client, string userId)
