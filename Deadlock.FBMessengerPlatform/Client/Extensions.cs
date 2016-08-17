@@ -1,4 +1,5 @@
-﻿using Facebook;
+﻿using Deadlock.FBMessengerPlatform.Model;
+using Facebook;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +15,19 @@ namespace Deadlock.FBMessengerPlatform.Client
             return await client.PostTaskAsync("me/messages", send);
         }
 
-        public static async Task<object> WelcomeMessage(this FacebookClient client, ThreadSettings threadSettings)
+        public static async Task<object> PostThreadSettings(this FacebookClient client, IThreadSettings threadSettings)
         {
             return await client.PostTaskAsync($"me/thread_settings", threadSettings);
         }
 
-        public static async Task<UserProfile> UserProfile(this FacebookClient client, string userId)
+        public static async Task<object> DeleteThreadSettings(this FacebookClient client, IThreadSettings threadSettings)
         {
-            return await client.GetTaskAsync<UserProfile>($"{userId}?fields=first_name,last_name,profile_pic");
+            return await client.DeleteTaskAsync($"me/thread_settings", threadSettings, new System.Threading.CancellationToken());
+        }
+
+        public static async Task<UserProfile> GetUserProfile(this FacebookClient client, string userId)
+        {
+            return await client.GetTaskAsync<UserProfile>($"{userId}?fields=first_name,last_name,profile_pic,locale,timezone,gender");
         }
     }
 }

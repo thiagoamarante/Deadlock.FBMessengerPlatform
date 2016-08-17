@@ -34,8 +34,8 @@
       <HintPath>..\..\..\..\Packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -57,41 +57,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client\Address.cs" />
-    <Compile Include="Client\Adjustment.cs" />
-    <Compile Include="Client\Attachment.cs" />
-    <Compile Include="Client\Button.cs" />
-    <Compile Include="Client\CallToAction.cs" />
-    <Compile Include="Client\ReceiptElement.cs" />
-    <Compile Include="Client\ReceiptPayloadTemplate.cs" />
+    <Compile Include="Converters\PayloadConverter.cs" />
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\Adjustment.cs" />
+    <Compile Include="Model\Button.cs" />
+    <Compile Include="Model\GetStartedButtonCallToActions.cs" />
+    <Compile Include="Model\PersistentMenuThreadSettings.cs" />
+    <Compile Include="Model\GetStartedButtonThreadSettings.cs" />
+    <Compile Include="Model\Greeting.cs" />
+    <Compile Include="Model\GreetingThreadSettings.cs" />
+    <Compile Include="Model\ReceiptElement.cs" />
+    <Compile Include="Model\ReceiptTemplatePayload.cs" />
     <Compile Include="Client\Extensions.cs" />
-    <Compile Include="Client\GenericElement.cs" />
-    <Compile Include="Client\ButtonPayloadTemplate.cs" />
-    <Compile Include="Client\GenericPayloadTemplate.cs" />
-    <Compile Include="Client\IElement.cs" />
-    <Compile Include="Client\IPayload.cs" />
-    <Compile Include="Client\IPayloadTemplate.cs" />
-    <Compile Include="Client\Message.cs" />
-    <Compile Include="Client\ImagePayload.cs" />
-    <Compile Include="Client\Recipient.cs" />
-    <Compile Include="Client\Send.cs" />
-    <Compile Include="Client\Summary.cs" />
-    <Compile Include="Client\ThreadSettings.cs" />
-    <Compile Include="Client\UserProfile.cs" />
+    <Compile Include="Model\GenericElement.cs" />
+    <Compile Include="Model\ButtonTemplatePayload.cs" />
+    <Compile Include="Model\GenericTemplatePayload.cs" />
+    <Compile Include="Model\IElement.cs" />
+    <Compile Include="Model\IPayload.cs" />
+    <Compile Include="Model\LocationPayload.cs" />
+    <Compile Include="Model\MediaPayload.cs" />
+    <Compile Include="Model\ITemplatePayload.cs" />
+    <Compile Include="Model\MessageSend.cs" />
+    <Compile Include="Model\Recipient.cs" />
+    <Compile Include="Model\Send.cs" />
+    <Compile Include="Model\Summary.cs" />
+    <Compile Include="Model\IThreadSettings.cs" />
+    <Compile Include="Model\UserProfile.cs" />
+    <Compile Include="Model\SendResponse.cs" />
+    <Compile Include="Model\SendResponseError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="WebHooks\Attachment.cs" />
-    <Compile Include="WebHooks\Callback.cs" />
-    <Compile Include="WebHooks\Coordinates.cs" />
-    <Compile Include="WebHooks\Delivery.cs" />
-    <Compile Include="WebHooks\Entry.cs" />
-    <Compile Include="WebHooks\Hub.cs" />
-    <Compile Include="WebHooks\Identity.cs" />
-    <Compile Include="WebHooks\Message.cs" />
-    <Compile Include="WebHooks\Messaging.cs" />
-    <Compile Include="WebHooks\Optin.cs" />
-    <Compile Include="WebHooks\Payload.cs" />
-    <Compile Include="WebHooks\PostBack.cs" />
+    <Compile Include="Model\Attachment.cs" />
+    <Compile Include="Model\Callback.cs" />
+    <Compile Include="Model\Coordinates.cs" />
+    <Compile Include="Model\Delivery.cs" />
+    <Compile Include="Model\Entry.cs" />
+    <Compile Include="Model\Hub.cs" />
+    <Compile Include="Model\Identity.cs" />
+    <Compile Include="Model\MessageReceived.cs" />
+    <Compile Include="Model\Messaging.cs" />
+    <Compile Include="Model\Optin.cs" />
+    <Compile Include="Model\PostBack.cs" />
+    <Compile Include="Model\QuickReply.cs" />
+    <Compile Include="Model\Read.cs" />
     <Compile Include="WebHooks\WebHooksController.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,8 @@
-# Deadlock.FBMessengerPlatform (1.0.0)
+# Deadlock.FBMessengerPlatform (1.5.0)
+
+[Updates Facebook July 1st, 2016](https://developers.facebook.com/docs/messenger-platform/changelog) 
+
+>Update documentation soon
 
 Framework in C # to create bots for Facebook Messenger Platform
 

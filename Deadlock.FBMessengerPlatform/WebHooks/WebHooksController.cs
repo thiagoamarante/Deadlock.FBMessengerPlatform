@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Deadlock.FBMessengerPlatform.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -16,7 +17,7 @@ namespace Deadlock.FBMessengerPlatform.WebHooks
             if(hub == null)
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "The hub can not be null.");
 
-            if (hub.verify_token == Settings.VerifyToken)
+            if (this.VerifyToken(hub.verify_token))
             {
                 var resp = new HttpResponseMessage(HttpStatusCode.OK);
                 resp.Content = new StringContent(hub.challenge, System.Text.Encoding.UTF8, "text/plain");
@@ -30,5 +31,7 @@ namespace Deadlock.FBMessengerPlatform.WebHooks
         {
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
+        public abstract bool VerifyToken(string verifyToken);
     }
 }
