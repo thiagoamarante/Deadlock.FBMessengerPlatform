@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Deadlock.FBMessengerPlatform.Model
 {
-    public interface IThreadSettings
+    public class MessageResult : Result
     {
-        string setting_type { get; set; }
+        public string RecipientId { get; set; }
+
+        public string MessageId { get; set; }
     }
 }

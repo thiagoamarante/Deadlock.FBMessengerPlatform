@@ -8,18 +8,26 @@ using System.Threading.Tasks;
 
 namespace Deadlock.FBMessengerPlatform.Model
 {
-    public class Attachment
+    public abstract class Attachment<T> : IAttachment
+        where T: IPayload
     {
+        public Attachment(string type)
+        {
+            this.Type = type;
+        }
+
         /// <summary>
         /// image, audio, video, file, location, template, fallback
         /// </summary>
-        public string type { get; set; }
+        [JsonProperty("type")]
+        public string Type { get; set; }
 
-        public string title { get; set; }
+        //public string title { get; set; }
 
-        public string url { get; set; }
+        //public string url { get; set; }
 
-        [JsonConverter(typeof(PayloadConverter))]
-        public IPayload payload { get; set; }
+        //[JsonConverter(typeof(PayloadConverter))]
+        [JsonProperty("payload")]
+        public T Payload { get; set; }
     }
 }

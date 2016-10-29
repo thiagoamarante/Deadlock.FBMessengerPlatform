@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Deadlock.FBMessengerPlatform.Model
 {
-    public class GreetingThreadSettings : IThreadSettings
+    public enum WebviewHeightRatio
     {
-        public string setting_type { get; set; } = "greeting";
-
-        public Greeting greeting { get; set; }
+        Full = 0,
+        Compact,
+        Tall
     }
 }

@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Deadlock.FBMessengerPlatform.Model
 {
-    public class MediaPayload : IPayload
+    public class TextMessage : MessageSent
     {
         /// <summary>
-        /// URL of media
+        /// text is used when sending a text message, must be UTF-8 and has a 320 character limit
         /// </summary>
-        [JsonProperty("url")]
-        public string Url { get; set; }
+        [JsonProperty("text")]
+        public string Text { get; set; }
     }
 }

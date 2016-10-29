@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Deadlock.FBMessengerPlatform.Model
 {
-    public class MediaPayload : IPayload
+    public class AttachmentMessage : MessageSent
     {
         /// <summary>
-        /// URL of media
+        /// attachment is used to send messages with images or Structured Messages
         /// </summary>
-        [JsonProperty("url")]
-        public string Url { get; set; }
+        [JsonProperty("attachment")]
+        public IAttachment Attachment { get; set; }
     }
 }

@@ -9,16 +9,25 @@ namespace Deadlock.FBMessengerPlatform.Model
 {
     public class UserProfile
     {
-        public string first_name { get; set; }
- 
-        public string last_name { get; set; }
-        
-        public string profile_pic { get; set; }
+        [JsonProperty("first_name")]
+        public string Firstname { get; set; }
 
-        public string locale { get; set; }
+        [JsonProperty("last_name")]
+        public string Lastname { get; set; }
 
-        public int timezone { get; set; }
+        [JsonProperty("profile_pic")]
+        public string ProfilePicture { get; set; }
 
-        public string gender { get; set; }
+        [JsonProperty("locale")]
+        public string Locale { get; set; }
+
+        [JsonProperty("timezone")]
+        public int Timezone { get; set; }
+
+        [JsonProperty("gender")]
+        public string Gender { get; set; }
+
+        [JsonProperty("is_payment_enabled")]
+        public bool IsPaymentEnabled { get; set; }
     }
 }

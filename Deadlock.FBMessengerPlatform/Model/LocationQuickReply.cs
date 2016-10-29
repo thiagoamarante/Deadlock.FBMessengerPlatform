@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Deadlock.FBMessengerPlatform.Model
 {
-    public class MediaPayload : IPayload
+    public class LocationQuickReply : QuickReply
     {
-        /// <summary>
-        /// URL of media
-        /// </summary>
-        [JsonProperty("url")]
-        public string Url { get; set; }
+        public LocationQuickReply() 
+            : base("location")
+        {
+
+        }
     }
 }

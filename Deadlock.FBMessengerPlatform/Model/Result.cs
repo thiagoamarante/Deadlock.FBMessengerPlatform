@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Deadlock.FBMessengerPlatform.Model
 {
-    public class GetStartedButtonCallToActions
+    public class Result
     {
-        public string payload { get; set; }
+        public bool Success { get; set; }
+
+        public string Message { get; set; }
+
+        public ResultError Error { get; set; }
     }
 }

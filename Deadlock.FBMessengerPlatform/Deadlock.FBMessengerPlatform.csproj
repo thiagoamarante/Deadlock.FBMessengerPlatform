@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
@@ -57,15 +58,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client\FacebookClient.cs" />
+    <Compile Include="Converters\EnumValueConverter.cs" />
     <Compile Include="Converters\PayloadConverter.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Adjustment.cs" />
+    <Compile Include="Model\AttachmentMessage.cs" />
     <Compile Include="Model\Button.cs" />
-    <Compile Include="Model\GetStartedButtonCallToActions.cs" />
-    <Compile Include="Model\PersistentMenuThreadSettings.cs" />
-    <Compile Include="Model\GetStartedButtonThreadSettings.cs" />
-    <Compile Include="Model\Greeting.cs" />
-    <Compile Include="Model\GreetingThreadSettings.cs" />
+    <Compile Include="Model\IAttachment.cs" />
+    <Compile Include="Model\ImageAttachment.cs" />
+    <Compile Include="Model\MenuItem.cs" />
+    <Compile Include="Model\MessageSent.cs" />
+    <Compile Include="Model\NotificationType.cs" />
+    <Compile Include="Model\PostbackMenuItem.cs" />
     <Compile Include="Model\ReceiptElement.cs" />
     <Compile Include="Model\ReceiptTemplatePayload.cs" />
     <Compile Include="Client\Extensions.cs" />
@@ -77,14 +82,20 @@
     <Compile Include="Model\LocationPayload.cs" />
     <Compile Include="Model\MediaPayload.cs" />
     <Compile Include="Model\ITemplatePayload.cs" />
-    <Compile Include="Model\MessageSend.cs" />
     <Compile Include="Model\Recipient.cs" />
-    <Compile Include="Model\Send.cs" />
+    <Compile Include="Model\MessageResult.cs" />
+    <Compile Include="Model\Result.cs" />
+    <Compile Include="Model\ResultError.cs" />
+    <Compile Include="Model\SenderAction.cs" />
     <Compile Include="Model\Summary.cs" />
-    <Compile Include="Model\IThreadSettings.cs" />
+    <Compile Include="Model\TextMessage.cs" />
+    <Compile Include="Model\LocationQuickReply.cs" />
+    <Compile Include="Model\TextQuickReply.cs" />
     <Compile Include="Model\UserProfile.cs" />
     <Compile Include="Model\SendResponse.cs" />
     <Compile Include="Model\SendResponseError.cs" />
+    <Compile Include="Model\WebUrlMenuItem.cs" />
+    <Compile Include="Model\WebviewHeightRatio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Attachment.cs" />
     <Compile Include="Model\Callback.cs" />

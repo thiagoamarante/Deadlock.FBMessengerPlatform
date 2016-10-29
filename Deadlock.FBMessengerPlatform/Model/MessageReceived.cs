@@ -47,6 +47,6 @@ namespace Deadlock.FBMessengerPlatform.Model
         /// <summary>
         /// Array containing attachment data
         /// </summary>
-        public List<Attachment> attachments { get; set; }
+        //public List<Attachment> attachments { get; set; }
     }
 }

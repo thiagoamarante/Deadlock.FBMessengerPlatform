@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,21 +7,23 @@ using System.Threading.Tasks;
 
 namespace Deadlock.FBMessengerPlatform.Model
 {
-    public class QuickReply
+    public abstract class QuickReply
     {
-        /// <summary>
-        /// Value must be text or template
-        /// </summary>
-        public string content_type { get; set; }
+        public QuickReply(string contentType)
+        {
+            this.ContentType = contentType;
+        }
 
         /// <summary>
-        /// Caption of button (has a 20 character limit)
+        /// Value must be text or location
         /// </summary>
-        public string title { get; set; }
+        [JsonProperty("content_type")]
+        public string ContentType { get; private set; }       
 
         /// <summary>
-        /// Custom data that will be sent back to you via webhook (has a 1000 character limit)
+        /// Image for image_url should be at least 24x24 and will be cropped and resized
         /// </summary>
-        public string payload { get; set; }
+        [JsonProperty("image_url")]
+        public string ImageUrl { get; set; }
     }
 }
