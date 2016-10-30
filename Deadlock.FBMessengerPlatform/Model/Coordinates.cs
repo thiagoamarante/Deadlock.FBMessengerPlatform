@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,16 @@ namespace Deadlock.FBMessengerPlatform.Model
 {
     public class Coordinates
     {
-        public string lat { get; set; }
+        /// <summary>
+        /// Latitude
+        /// </summary>
+        [JsonProperty("lat")]
+        public string Lat { get; set; }
 
-        public string @long { get; set; }
+        /// <summary>
+        /// Longitude
+        /// </summary>
+        [JsonProperty("long")]
+        public string Long { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,22 @@ namespace Deadlock.FBMessengerPlatform.Model
 {
     public class Entry
     {
-        public string id { get; set; }
+        /// <summary>
+        /// Page ID of page
+        /// </summary>
+        [JsonProperty("id")]
+        public string Id { get; set; }
 
-        public string time { get; set; }
+        /// <summary>
+        /// Time of update (epoch time in milliseconds)
+        /// </summary>
+        [JsonProperty("time")]
+        public string Time { get; set; }
 
-        public List<Messaging> messaging { get; set; }
+        /// <summary>
+        /// Array containing objects related to messaging
+        /// </summary>
+        [JsonProperty("messaging")]
+        public List<Messaging> Messaging { get; set; }
     }
 }

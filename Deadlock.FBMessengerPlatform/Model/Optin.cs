@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,10 @@ namespace Deadlock.FBMessengerPlatform.Model
 {
     public class Optin
     {
-        public string @ref { get; set; }
+        /// <summary>
+        /// data-ref parameter that was defined with the entry point
+        /// </summary>
+        [JsonProperty("ref")]
+        public string Ref { get; set; }
     }
 }

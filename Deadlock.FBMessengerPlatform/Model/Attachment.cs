@@ -20,11 +20,7 @@ namespace Deadlock.FBMessengerPlatform.Model
         /// image, audio, video, file, location, template, fallback
         /// </summary>
         [JsonProperty("type")]
-        public string Type { get; set; }
-
-        //public string title { get; set; }
-
-        //public string url { get; set; }
+        public string Type { get; private set; }
 
         //[JsonConverter(typeof(PayloadConverter))]
         [JsonProperty("payload")]

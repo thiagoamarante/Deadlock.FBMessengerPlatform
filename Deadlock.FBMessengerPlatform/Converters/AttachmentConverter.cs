@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace Deadlock.FBMessengerPlatform.Converters
 {
-    public class PayloadConverter : JsonConverter
+    public class AttachmentConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {
-            return objectType == typeof(IPayload);
+            return objectType == typeof(IAttachment);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            //var jsonObject = JObject.Load(reader);
+            var jsonObject = JArray.Load(reader);
             //var payload = default(IPayload);           
             //if(jsonObject["url"] != null)
             //{

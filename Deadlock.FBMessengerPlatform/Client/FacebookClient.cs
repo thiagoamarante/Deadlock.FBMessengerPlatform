@@ -225,6 +225,10 @@ namespace Deadlock.FBMessengerPlatform.Client
                     result.MessageId = returnValue.Value<string>("message_id");
                     result.Success = true;
                 }
+                else
+                {
+
+                }
             }
             catch (Exception ex)
             {

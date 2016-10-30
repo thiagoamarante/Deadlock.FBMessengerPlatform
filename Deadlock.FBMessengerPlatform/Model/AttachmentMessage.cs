@@ -9,6 +9,16 @@ namespace Deadlock.FBMessengerPlatform.Model
 {
     public class AttachmentMessage : MessageSent
     {
+        public AttachmentMessage()
+        {
+
+        }
+
+        public AttachmentMessage(IAttachment attachment)
+        {
+            this.Attachment = attachment;
+        }
+
         /// <summary>
         /// attachment is used to send messages with images or Structured Messages
         /// </summary>

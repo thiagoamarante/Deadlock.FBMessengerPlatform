@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,21 +12,25 @@ namespace Deadlock.FBMessengerPlatform.Model
         /// <summary>
         /// Subtotal
         /// </summary>
-        public decimal subtotal { get; set; }
+        [JsonProperty("subtotal")]
+        public decimal Subtotal { get; set; }
 
         /// <summary>
         /// Cost of shipping
         /// </summary>
-        public decimal shipping_cost { get; set; }
+        [JsonProperty("shipping_cost")]
+        public decimal ShippingCost { get; set; }
 
         /// <summary>
         /// Total tax
         /// </summary>
-        public decimal total_tax { get; set; }
+        [JsonProperty("total_tax")]
+        public decimal TotalTax { get; set; }
 
         /// <summary>
         /// Total cost
         /// </summary>
-        public decimal total_cost { get; set; }
+        [JsonProperty("total_cost")]
+        public decimal TotalCost { get; set; }
     }
 }

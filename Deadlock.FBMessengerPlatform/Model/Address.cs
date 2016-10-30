@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,31 +12,37 @@ namespace Deadlock.FBMessengerPlatform.Model
         /// <summary>
         /// Street Address, line 1
         /// </summary>
-        public string street_1 { get; set; }
+        [JsonProperty("street_1")]
+        public string Street1 { get; set; }
 
         /// <summary>
         /// Street Address, line 2
         /// </summary>
-        public string street_2 { get; set; }
+        [JsonProperty("street_2")]
+        public string Street2 { get; set; }
 
         /// <summary>
         /// City
         /// </summary>
-        public string city { get; set; }
+        [JsonProperty("city")]
+        public string City { get; set; }
 
         /// <summary>
         /// US Postal Code
         /// </summary>
-        public string postal_code { get; set; }
+        [JsonProperty("postal_code")]
+        public string PostalCode { get; set; }
 
         /// <summary>
-        /// Two-letter state abbrevation (US)
+        /// State abbreviation or Region/Province (international)
         /// </summary>
-        public string state { get; set; }
+        [JsonProperty("state")]
+        public string State { get; set; }
 
         /// <summary>
         /// Two-letter country abbreviation
         /// </summary>
-        public string country { get; set; }
+        [JsonProperty("country")]
+        public string Country { get; set; }
     }
 }

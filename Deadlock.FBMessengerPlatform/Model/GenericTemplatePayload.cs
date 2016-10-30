@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,17 +7,25 @@ using System.Threading.Tasks;
 
 namespace Deadlock.FBMessengerPlatform.Model
 {
-    public class GenericTemplatePayload : ITemplatePayload
+    public class GenericTemplatePayload : TemplatePayload
     {
-        /// <summary>
-        /// Value must be generic
-        /// </summary>
-        public string template_type { get; set; } = "generic";
+        public GenericTemplatePayload() 
+            : base("generic")
+        {
+        }
+
+        public GenericTemplatePayload(List<GenericElement> elements)
+            : this()
+        {
+            this.Elements = elements;
+        }
+
 
         // <summary>
         /// Data for each bubble in message
         /// Bubbles per message (horizontal scroll): 10 elements
         /// </summary>
-        public List<GenericElement> elements { get; set; }
+        [JsonProperty("elements")]
+        public List<GenericElement> Elements { get; set; }
     }
 }

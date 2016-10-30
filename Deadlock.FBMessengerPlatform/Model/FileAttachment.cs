@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 namespace Deadlock.FBMessengerPlatform.Model
 {
     /// <summary>
-    /// You can send images by uploading them or sharing a URL using the Send API. Supported formats are jpg, png and gif.
+    /// You can send files by uploading them or sharing a URL using the Send API.
     /// </summary>
-    public class ImageAttachment : Attachment<MediaPayload>
+    public class FileAttachment : Attachment<MediaPayload>
     {
-        public ImageAttachment() 
-            : base("image")
+        public FileAttachment() 
+            : base("file")
         {
         }
 
-        public ImageAttachment(string url)
+        public FileAttachment(string url)
             : this()
         {
             this.Payload = new MediaPayload(url);

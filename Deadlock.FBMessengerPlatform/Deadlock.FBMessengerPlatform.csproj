@@ -60,12 +60,24 @@
   <ItemGroup>
     <Compile Include="Client\FacebookClient.cs" />
     <Compile Include="Converters\EnumValueConverter.cs" />
+    <Compile Include="Converters\AttachmentConverter.cs" />
     <Compile Include="Converters\PayloadConverter.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Adjustment.cs" />
     <Compile Include="Model\AttachmentMessage.cs" />
+    <Compile Include="Model\QuickReplyReceived.cs" />
+    <Compile Include="Model\ReceiptTemplateAttachment.cs" />
+    <Compile Include="Model\ShareButton.cs" />
+    <Compile Include="Model\FileAttachment.cs" />
+    <Compile Include="Model\ButtonTemplateAttachment.cs" />
+    <Compile Include="Model\GenericTemplateAttachment.cs" />
+    <Compile Include="Model\CallButton.cs" />
+    <Compile Include="Model\PostbackButton.cs" />
+    <Compile Include="Model\URLButton.cs" />
+    <Compile Include="Model\VideoAttachment.cs" />
     <Compile Include="Model\Button.cs" />
     <Compile Include="Model\IAttachment.cs" />
+    <Compile Include="Model\AudioAttachment.cs" />
     <Compile Include="Model\ImageAttachment.cs" />
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Model\MessageSent.cs" />
@@ -77,12 +89,10 @@
     <Compile Include="Model\GenericElement.cs" />
     <Compile Include="Model\ButtonTemplatePayload.cs" />
     <Compile Include="Model\GenericTemplatePayload.cs" />
-    <Compile Include="Model\IElement.cs" />
     <Compile Include="Model\IPayload.cs" />
     <Compile Include="Model\LocationPayload.cs" />
     <Compile Include="Model\MediaPayload.cs" />
-    <Compile Include="Model\ITemplatePayload.cs" />
-    <Compile Include="Model\Recipient.cs" />
+    <Compile Include="Model\TemplatePayload.cs" />
     <Compile Include="Model\MessageResult.cs" />
     <Compile Include="Model\Result.cs" />
     <Compile Include="Model\ResultError.cs" />
@@ -92,8 +102,6 @@
     <Compile Include="Model\LocationQuickReply.cs" />
     <Compile Include="Model\TextQuickReply.cs" />
     <Compile Include="Model\UserProfile.cs" />
-    <Compile Include="Model\SendResponse.cs" />
-    <Compile Include="Model\SendResponseError.cs" />
     <Compile Include="Model\WebUrlMenuItem.cs" />
     <Compile Include="Model\WebviewHeightRatio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

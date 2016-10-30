@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Deadlock.FBMessengerPlatform.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,43 +12,55 @@ namespace Deadlock.FBMessengerPlatform.Model
     public class MessageReceived
     {
         /// <summary>
-        /// Indicates the message sent from the page itself
-        /// </summary>
-        public bool is_echo { get; set; }
-
-        /// <summary>
-        /// ID of the app from which the message was sent
-        /// </summary>
-        public string app_id { get; set; }
-
-        /// <summary>
-        /// Custom string passed to the Send API as the metadata field
-        /// </summary>
-        public string metadata { get; set; }
-
-        /// <summary>
         /// Message ID
         /// </summary>
-        public string mid { get; set; }
+        [JsonProperty("mid")]
+        public string Mid { get; set; }
 
         /// <summary>
         /// Sequence number
         /// </summary>
-        public int seq { get; set; }
+        [JsonProperty("seq")]
+        public int Seq { get; set; }
 
         /// <summary>
         /// Text of message
         /// </summary>
-        public string text { get; set; }
+        [JsonProperty("text")]
+        public string Text { get; set; }
 
         /// <summary>
         /// Optional custom data provided by the sending app
         /// </summary>
-        public QuickReply quick_reply { get; set; }
+        [JsonProperty("quick_reply")]
+        public QuickReplyReceived QuickReply { get; set; }
 
         /// <summary>
-        /// Array containing attachment data
+        /// Indicates the message sent from the page itself
         /// </summary>
-        //public List<Attachment> attachments { get; set; }
+        [JsonProperty("is_echo")]
+        public bool IsEcho { get; set; }
+
+        /// <summary>
+        /// ID of the app from which the message was sent
+        /// </summary>
+        [JsonProperty("app_id")]
+        public string AppId { get; set; }
+
+        /// <summary>
+        /// Custom string passed to the Send API as the metadata field
+        /// </summary>
+        [JsonProperty("metadata")]
+        public string Metadata { get; set; }
+
+        /// <summary>
+        /// attachment is used to send messages with images or Structured Messages
+        /// </summary>
+        //[JsonProperty("attachment", ItemConverterType = typeof(AttachmentConverter))]
+        //[JsonConverter(typeof(AttachmentConverter))]
+        //public List<IAttachment> Attachment { get; set; }
+        [JsonProperty("attachments")]
+        [JsonConverter(typeof(AttachmentConverter))]
+        public JObject Attachments { get; set; }
     }
 }

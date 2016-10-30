@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,38 +7,44 @@ using System.Threading.Tasks;
 
 namespace Deadlock.FBMessengerPlatform.Model
 {
-    public class ReceiptElement : IElement
+    public class ReceiptElement
     {
         /// <summary>
-        /// Image URL of item
+        /// Title of item
+        /// 45 characters
         /// </summary>
-        public string image_url { get; set; }
+        [JsonProperty("title")]
+        public string Title { get; set; }
 
         /// <summary>
         /// Bubble Title of item
         /// 80 characters
         /// </summary>
-        public string subtitle { get; set; }
-
-        /// <summary>
-        /// Title of item
-        /// 45 characters
-        /// </summary>
-        public string title { get; set; }
+        [JsonProperty("subtitle")]
+        public string Subtitle { get; set; }
 
         /// <summary>
         /// Quantity of item
         /// </summary>
-        public decimal quantity { get; set; }
+        [JsonProperty("quantity")]
+        public int Quantity { get; set; }
 
         /// <summary>
         /// Item price
         /// </summary>
-        public decimal price { get; set; }
+        [JsonProperty("price")]
+        public decimal Price { get; set; }
 
         /// <summary>
         /// Currency of price
         /// </summary>
-        public string currency { get; set; }
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// Image URL of item
+        /// </summary>
+        [JsonProperty("image_url")]
+        public string ImageUrl { get; set; }  
     }
 }

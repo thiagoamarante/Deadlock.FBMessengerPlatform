@@ -9,6 +9,16 @@ namespace Deadlock.FBMessengerPlatform.Model
 {
     public class MediaPayload : IPayload
     {
+        public MediaPayload()
+        {
+
+        }
+
+        public MediaPayload(string url)
+        {
+            this.Url = url;
+        }
+
         /// <summary>
         /// URL of media
         /// </summary>

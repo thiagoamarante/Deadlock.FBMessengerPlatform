@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace Deadlock.FBMessengerPlatform.Model
 {
-    public interface IElement
+    public class QuickReplyReceived
     {
-        string title { get; set; }
-
-        string image_url { get; set; }
-
-        string subtitle { get; set; }
+        [JsonProperty("payload")]
+        public string Payload { get; set; }
     }
 }

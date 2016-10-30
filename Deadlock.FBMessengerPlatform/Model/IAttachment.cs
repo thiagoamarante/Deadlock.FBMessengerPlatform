@@ -8,6 +8,6 @@ namespace Deadlock.FBMessengerPlatform.Model
 {
     public interface IAttachment
     {
-        string Type { get; set; }
+        string Type { get; }
     }
 }
