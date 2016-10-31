@@ -18,35 +18,47 @@ namespace Deadlock.FBMessengerPlatform.Converters
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            var jsonObject = JArray.Load(reader);
-            //var payload = default(IPayload);           
-            //if(jsonObject["url"] != null)
-            //{
-            //    payload = new MediaPayload();
-            //}
-            //else if (jsonObject["coordinates"] != null)
-            //{
-            //    payload = new LocationPayload();
-            //}
-            //else if (jsonObject["template_type"] != null)
-            //{
-            //    var token = (JValue)jsonObject["template_type"];
-            //    switch(token.Value.ToString())
-            //    {
-            //        case "button":
-            //            payload = new ButtonTemplatePayload();
-            //            break;
-            //        case "generic":
-            //            payload = new GenericTemplatePayload();
-            //            break;
-            //        case "receipt":
-            //            payload = new ReceiptTemplatePayload();
-            //            break;
-            //    }
-            //}
-            //serializer.Populate(jsonObject.CreateReader(), payload);
-            //return payload;
-            return null;
+            IAttachment result = default(IAttachment); ;
+            JObject attachment = JObject.Load(reader);
+            string type = (attachment["type"] as JValue).Value.ToString();
+            switch(type)
+            {
+                case "image":
+                    result = new ImageAttachment();
+                    break;
+                case "audio":
+                    result = new AudioAttachment();
+                    break;
+                case "video":
+                    result = new VideoAttachment();
+                    break;
+                case "file":
+                    result = new FileAttachment();
+                    break;
+                case "location":
+                    result = new LocationAttachment();
+                    break;
+                case "fallback":
+                    result = new FallbackAttachment();
+                    break;
+                case "template":
+                    string templateType = (attachment["payload"]["template_type"] as JValue).Value.ToString();
+                    switch(templateType)
+                    {
+                        case "generic":
+                            result = new GenericTemplateAttachment();
+                            break;
+                        case "button":
+                            result = new ButtonTemplateAttachment();
+                            break;
+                        case "receipt":
+                            result = new ReceiptTemplateAttachment();
+                            break;
+                    }
+                    break;
+            }
+            serializer.Populate(attachment.CreateReader(), result);
+            return result;
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

@@ -203,12 +203,18 @@ namespace Deadlock.FBMessengerPlatform.Client
             return result;
         }
 
+        /// <summary>
+        /// Send messages to users.
+        /// </summary>
+        /// <param name="userId">User identification</param>
+        /// <param name="message">Message object</param>
+        /// <param name="notificationType">Push notification type: REGULAR, SILENT_PUSH, NO_PUSH</param>
+        /// <returns></returns>
         public async Task<MessageResult> SendMessage(string userId, MessageSent message, NotificationType notificationType = NotificationType.Regular)
         {
             MessageResult result = new MessageResult();
             try
-            {
-                string t = Newtonsoft.Json.JsonConvert.SerializeObject(message);
+            {    
                 JObject returnValue = (JObject)await this.PostTaskAsync("me/messages", new
                 {
                     recipient = new
@@ -257,7 +263,7 @@ namespace Deadlock.FBMessengerPlatform.Client
                 return value;
             }, (value, type) =>
             {
-                return JsonConvert.DeserializeObject(value, this.JsonSerializerSettings);
+                return type == null? JsonConvert.DeserializeObject(value, this.JsonSerializerSettings) : JsonConvert.DeserializeObject(value, type, this.JsonSerializerSettings);
             });
         }
 

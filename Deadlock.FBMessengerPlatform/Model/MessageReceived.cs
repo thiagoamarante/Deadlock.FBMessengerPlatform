@@ -56,11 +56,7 @@ namespace Deadlock.FBMessengerPlatform.Model
         /// <summary>
         /// attachment is used to send messages with images or Structured Messages
         /// </summary>
-        //[JsonProperty("attachment", ItemConverterType = typeof(AttachmentConverter))]
-        //[JsonConverter(typeof(AttachmentConverter))]
-        //public List<IAttachment> Attachment { get; set; }
-        [JsonProperty("attachments")]
-        [JsonConverter(typeof(AttachmentConverter))]
-        public JObject Attachments { get; set; }
+        [JsonProperty("attachments", ItemConverterType = typeof(AttachmentConverter))]
+        public List<IAttachment> Attachments { get; set; }
     }
 }

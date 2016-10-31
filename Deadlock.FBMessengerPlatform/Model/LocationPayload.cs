@@ -9,6 +9,16 @@ namespace Deadlock.FBMessengerPlatform.Model
 {
     public class LocationPayload : IPayload
     {
+        public LocationPayload()
+        {
+
+        }
+
+        public LocationPayload(Coordinates coordinates)
+        {
+            this.Coordinates = coordinates;
+        }
+
         [JsonProperty("coordinates")]
         public Coordinates Coordinates { get; set; }
     }
