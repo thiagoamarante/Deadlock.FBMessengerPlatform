@@ -15,6 +15,13 @@ namespace Deadlock.FBMessengerPlatform.Model
 
         }
 
+        public PostbackMenuItem(string title, string payload)
+            :this()
+        {
+            this.Title = title;
+            this.Payload = payload;
+        }
+
         /// <summary>
         /// For postback buttons, this data will be sent back to you via webhook
         /// payload has a 1000 character limit

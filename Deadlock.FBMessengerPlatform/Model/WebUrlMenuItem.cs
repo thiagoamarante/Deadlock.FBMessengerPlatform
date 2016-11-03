@@ -16,6 +16,13 @@ namespace Deadlock.FBMessengerPlatform.Model
             
         }
 
+        public WebUrlMenuItem(string title, string url)
+            :this()
+        {
+            this.Title = title;
+            this.Url = url;
+        }
+
         /// <summary>
         /// For web_url buttons, this URL is opened in a mobile browser when the button is tapped
         /// </summary>

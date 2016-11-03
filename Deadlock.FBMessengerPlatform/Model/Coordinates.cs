@@ -13,12 +13,12 @@ namespace Deadlock.FBMessengerPlatform.Model
         /// Latitude
         /// </summary>
         [JsonProperty("lat")]
-        public string Lat { get; set; }
+        public string Latitude { get; set; }
 
         /// <summary>
         /// Longitude
         /// </summary>
         [JsonProperty("long")]
-        public string Long { get; set; }
+        public string Longitude { get; set; }
     }
 }
