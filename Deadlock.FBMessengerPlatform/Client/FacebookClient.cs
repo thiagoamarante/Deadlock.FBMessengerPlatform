@@ -204,6 +204,29 @@ namespace Deadlock.FBMessengerPlatform.Client
         }
 
         /// <summary>
+        /// Subscribe an app to get updates for a page. You can do this in the Webhooks section under the Messenger Tab.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<Result> SubscribedApps()
+        {
+            Result result = new Result();
+            try
+            {
+                JObject returnValue = (JObject)await this.PostTaskAsync("me/subscribed_apps", null);
+                result.Error = this.CreateResultError(returnValue);
+                if (result.Error == null)
+                {
+                    result.Success = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        /// <summary>
         /// Send messages to users.
         /// </summary>
         /// <param name="userId">User identification</param>
