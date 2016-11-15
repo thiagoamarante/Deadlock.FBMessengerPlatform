@@ -15,6 +15,11 @@ namespace Deadlock.FBMessengerPlatform.Model
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="title">Caption of button (has a 20 character limit)</param>
+        /// <param name="payload"></param>
         public TextQuickReply(string title, string payload)
             : this()
         {

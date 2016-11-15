@@ -14,9 +14,10 @@ namespace Deadlock.FBMessengerPlatform.Model
 
         }
 
-        public MediaPayload(string url)
+        public MediaPayload(string url, bool isReusable = false)
         {
             this.Url = url;
+            this.IsReusable = isReusable;
         }
 
         /// <summary>
@@ -24,5 +25,8 @@ namespace Deadlock.FBMessengerPlatform.Model
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }
+
+        [JsonProperty("is_reusable")]
+        public bool IsReusable { get; set; }
     }
 }

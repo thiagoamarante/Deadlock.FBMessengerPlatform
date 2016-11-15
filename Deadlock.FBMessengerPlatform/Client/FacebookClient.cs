@@ -252,6 +252,7 @@ namespace Deadlock.FBMessengerPlatform.Client
                 {
                     result.RecipientId = returnValue.Value<string>("recipient_id");
                     result.MessageId = returnValue.Value<string>("message_id");
+                    result.AttachmentId = returnValue.Value<string>("attachment_id");
                     result.Success = true;
                 }
                 else

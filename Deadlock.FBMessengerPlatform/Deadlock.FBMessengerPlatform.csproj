@@ -66,6 +66,10 @@
     <Compile Include="Model\AttachmentMessage.cs" />
     <Compile Include="Model\FallbackAttachment.cs" />
     <Compile Include="Model\LocationAttachment.cs" />
+    <Compile Include="Model\ReusableMediaAttachment.cs" />
+    <Compile Include="Model\MediaAttachment.cs" />
+    <Compile Include="Model\MediaType.cs" />
+    <Compile Include="Model\ReusableMediaPayload.cs" />
     <Compile Include="Model\QuickReplyReceived.cs" />
     <Compile Include="Model\ReceiptTemplateAttachment.cs" />
     <Compile Include="Model\ShareButton.cs" />

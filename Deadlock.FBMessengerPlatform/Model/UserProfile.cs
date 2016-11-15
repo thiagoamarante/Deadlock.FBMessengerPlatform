@@ -22,7 +22,7 @@ namespace Deadlock.FBMessengerPlatform.Model
         public string Locale { get; set; }
 
         [JsonProperty("timezone")]
-        public int Timezone { get; set; }
+        public string Timezone { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }

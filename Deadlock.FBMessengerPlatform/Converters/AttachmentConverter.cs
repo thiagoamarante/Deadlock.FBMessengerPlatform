@@ -24,16 +24,16 @@ namespace Deadlock.FBMessengerPlatform.Converters
             switch(type)
             {
                 case "image":
-                    result = new ImageAttachment();
+                    result = new MediaAttachment(MediaType.Image);
                     break;
                 case "audio":
-                    result = new AudioAttachment();
+                    result = new MediaAttachment(MediaType.Audio);
                     break;
                 case "video":
-                    result = new VideoAttachment();
+                    result = new MediaAttachment(MediaType.Video);
                     break;
                 case "file":
-                    result = new FileAttachment();
+                    result = new MediaAttachment(MediaType.File);
                     break;
                 case "location":
                     result = new LocationAttachment();

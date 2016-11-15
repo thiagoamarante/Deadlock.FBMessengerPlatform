@@ -11,5 +11,7 @@ namespace Deadlock.FBMessengerPlatform.Model
         public string RecipientId { get; set; }
 
         public string MessageId { get; set; }
+
+        public string AttachmentId { get; set; }
     }
 }
