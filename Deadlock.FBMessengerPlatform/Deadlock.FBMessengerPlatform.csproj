@@ -65,12 +65,17 @@
     <Compile Include="Model\Adjustment.cs" />
     <Compile Include="Model\AttachmentMessage.cs" />
     <Compile Include="Model\FallbackAttachment.cs" />
+    <Compile Include="Model\GreetingValue.cs" />
     <Compile Include="Model\LocationAttachment.cs" />
+    <Compile Include="Model\Locations.cs" />
+    <Compile Include="Model\MessengerProfile.cs" />
+    <Compile Include="Model\PayloadItem.cs" />
+    <Compile Include="Model\PersistentMenu.cs" />
+    <Compile Include="Model\NestedMenuItem.cs" />
     <Compile Include="Model\ReusableMediaAttachment.cs" />
     <Compile Include="Model\MediaAttachment.cs" />
     <Compile Include="Model\MediaType.cs" />
     <Compile Include="Model\ReusableMediaPayload.cs" />
-    <Compile Include="Model\QuickReplyReceived.cs" />
     <Compile Include="Model\ReceiptTemplateAttachment.cs" />
     <Compile Include="Model\ShareButton.cs" />
     <Compile Include="Model\FileAttachment.cs" />
@@ -120,7 +125,6 @@
     <Compile Include="Model\MessageReceived.cs" />
     <Compile Include="Model\Messaging.cs" />
     <Compile Include="Model\Optin.cs" />
-    <Compile Include="Model\PostBack.cs" />
     <Compile Include="Model\QuickReply.cs" />
     <Compile Include="Model\Read.cs" />
     <Compile Include="WebHooks\WebHooksController.cs" />

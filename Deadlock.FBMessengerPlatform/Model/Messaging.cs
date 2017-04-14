@@ -37,7 +37,7 @@ namespace Deadlock.FBMessengerPlatform.Model
         /// You can subscribe to this callback by selecting the messaging_postbacks field when setting up your webhook.
         /// </summary>
         [JsonProperty("postback")]
-        public Postback Postback { get; set; }
+        public PayloadItem Postback { get; set; }
 
         /// <summary>
         /// This callback will occur when the Send-to-Messenger plugin has been tapped. The optin.ref parameter is set by the data-ref field on the "Send to Messenger" plugin. This field can be used by the developer to associate a click event on the plugin with a callback.

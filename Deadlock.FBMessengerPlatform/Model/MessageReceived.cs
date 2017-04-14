@@ -33,7 +33,7 @@ namespace Deadlock.FBMessengerPlatform.Model
         /// Optional custom data provided by the sending app
         /// </summary>
         [JsonProperty("quick_reply")]
-        public QuickReplyReceived QuickReply { get; set; }
+        public PayloadItem QuickReply { get; set; }
 
         /// <summary>
         /// Indicates the message sent from the page itself

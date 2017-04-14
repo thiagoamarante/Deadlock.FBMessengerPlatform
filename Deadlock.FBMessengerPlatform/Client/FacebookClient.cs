@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Deadlock.FBMessengerPlatform.Client
 {
-    public class FacebookClient : Facebook.FacebookClient
+    public class FacebookClient : Facebook.FacebookClient, IDisposable
     {
         public FacebookClient()
             :base()
@@ -28,6 +28,38 @@ namespace Deadlock.FBMessengerPlatform.Client
         #endregion
 
         #region Methods
+
+        public async Task<Result> SetMessengerProfile(MessengerProfile messengerProfile)
+        {
+            Result result = new Result();
+            try
+            {
+                JObject returnValue = null;
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                if (!string.IsNullOrEmpty(messengerProfile.AccountLinkingUrl))
+                    parameters["account_linking_url"] = messengerProfile.AccountLinkingUrl;
+                if (messengerProfile.GetStarted != null)
+                    parameters["get_started"] = messengerProfile.GetStarted;
+                if (messengerProfile.PersistentMenu != null)
+                    parameters["persistent_menu"] = messengerProfile.PersistentMenu;
+                if (messengerProfile.Greeting != null)
+                    parameters["greeting"] = messengerProfile.Greeting;
+
+                returnValue = (JObject)await this.PostTaskAsync("me/messenger_profile", parameters);
+                result.Error = this.CreateResultError(returnValue);
+                if (result.Error == null)
+                {
+                    result.Message = returnValue.Value<string>("result");
+                    result.Success = result.Message.Contains("success");
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
         /// <summary>
         /// You can set a greeting for new conversations. This can be used to communicate your bot's functionality. If the greeting text is not set, the page description will be shown in the welcome screen. You can personalize the text with the person's name.
         /// </summary>
@@ -275,6 +307,11 @@ namespace Deadlock.FBMessengerPlatform.Client
         public async Task<UserProfile> GetUserProfile(string userId)
         {
             return await this.GetTaskAsync<UserProfile>($"{userId}?fields=first_name,last_name,profile_pic,locale,timezone,gender,is_payment_enabled");
+        }
+
+        public void Dispose()
+        {
+
         }
         #endregion
 
