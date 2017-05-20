@@ -18,6 +18,9 @@ namespace Deadlock.FBMessengerPlatform.Model
         /// Tempalte type generic, button or receipt
         /// </summary>
         [JsonProperty("template_type")]
-        public string TemplateType { get; private set; } 
+        public string TemplateType { get; private set; }
+
+        [JsonProperty("sharable")]
+        public bool Sharable { get; set; } = true;
     }
 }

@@ -35,6 +35,9 @@ namespace Deadlock.FBMessengerPlatform.Model
         [JsonProperty("image_url")]
         public string ImageUrl { get; set; }
 
+        [JsonProperty("default_action")]
+        public Button DefaultAction { get; set; }
+
         /// <summary>
         /// Set of buttons that appear as call-to-actions
         /// Call-to-action items: 3 buttons

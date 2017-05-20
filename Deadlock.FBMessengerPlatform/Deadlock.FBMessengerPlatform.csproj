@@ -34,8 +34,8 @@
       <HintPath>C:\Development\Packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>C:\Development\Packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -65,7 +65,9 @@
     <Compile Include="Model\Adjustment.cs" />
     <Compile Include="Model\AttachmentMessage.cs" />
     <Compile Include="Model\FallbackAttachment.cs" />
+    <Compile Include="Model\ListTemplatePayload.cs" />
     <Compile Include="Model\GreetingValue.cs" />
+    <Compile Include="Model\ImageAspectRatioType.cs" />
     <Compile Include="Model\LocationAttachment.cs" />
     <Compile Include="Model\Locations.cs" />
     <Compile Include="Model\MessengerProfile.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="Model\GenericTemplateAttachment.cs" />
     <Compile Include="Model\CallButton.cs" />
     <Compile Include="Model\PostbackButton.cs" />
+    <Compile Include="Model\TopElementStyleType.cs" />
     <Compile Include="Model\URLButton.cs" />
     <Compile Include="Model\VideoAttachment.cs" />
     <Compile Include="Model\Button.cs" />
@@ -130,7 +133,9 @@
     <Compile Include="WebHooks\WebHooksController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

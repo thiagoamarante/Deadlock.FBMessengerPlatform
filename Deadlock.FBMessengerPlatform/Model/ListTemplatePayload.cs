@@ -7,22 +7,22 @@ using System.Threading.Tasks;
 
 namespace Deadlock.FBMessengerPlatform.Model
 {
-    public class GenericTemplatePayload : TemplatePayload
+    public class ListTemplatePayload : TemplatePayload
     {
-        public GenericTemplatePayload() 
-            : base("generic")
+        public ListTemplatePayload() 
+            : base("list")
         {
         }
 
-        public GenericTemplatePayload(List<GenericElement> elements, ImageAspectRatioType imageAspectRatioType = ImageAspectRatioType.Horizontal)
+        public ListTemplatePayload(List<GenericElement> elements, TopElementStyleType topElementStyleType = TopElementStyleType.Large)
             : this()
         {
-            this.ImageAspectRatio = imageAspectRatioType.ToString().ToLower();
+            this.TopElementStyle = topElementStyleType.ToString().ToLower();
             this.Elements = elements;
         }
 
-        [JsonProperty("image_aspect_ratio")]
-        public string ImageAspectRatio { get; set; } = ImageAspectRatioType.Horizontal.ToString().ToLower();
+        [JsonProperty("top_element_style")]
+        public string TopElementStyle { get; set; } = TopElementStyleType.Large.ToString().ToLower();
 
         // <summary>
         /// Data for each bubble in message
