@@ -17,10 +17,10 @@ namespace Deadlock.FBMessengerPlatform.Model
 
         }
 
-        public GenericTemplateAttachment(List<GenericElement> elements)
+        public GenericTemplateAttachment(List<GenericElement> elements, ImageAspectRatioType imageAspectRatioType = ImageAspectRatioType.Horizontal)
             : this()
         {
-            this.Payload = new GenericTemplatePayload(elements);
+            this.Payload = new GenericTemplatePayload(elements, imageAspectRatioType);
         }
     }
 }
