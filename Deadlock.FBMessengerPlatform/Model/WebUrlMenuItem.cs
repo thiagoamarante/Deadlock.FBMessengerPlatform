@@ -41,5 +41,9 @@ namespace Deadlock.FBMessengerPlatform.Model
         /// </summary>
         [JsonProperty("messenger_extensions", NullValueHandling = NullValueHandling.Ignore)]
         public bool? MessengerExtensions { get; set; }
+
+        [JsonProperty("webview_share_button")]
+        [JsonConverter(typeof(StringEnumConverter), true)]
+        public WebviewShareButton WebviewShareButton { get; set; }
     }
 }

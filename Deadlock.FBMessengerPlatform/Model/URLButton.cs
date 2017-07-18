@@ -59,5 +59,9 @@ namespace Deadlock.FBMessengerPlatform.Model
         /// </summary>
         [JsonProperty("fallback_url")]
         public string FallbackUrl { get; set; }
+
+        [JsonProperty("webview_share_button")]
+        [JsonConverter(typeof(StringEnumConverter), true)]
+        public WebviewShareButton WebviewShareButton { get; set; }
     }
 }
